@@ -1,0 +1,14 @@
+fastapi[all]
+uvicorn[standard]
+python-multipart
+pydantic-settings
+aiosqlite
+chromadb
+httpx
+pdfplumber
+pytesseract
+Pillow
+playwright
+reportlab
+pytest
+pytest-asyncio

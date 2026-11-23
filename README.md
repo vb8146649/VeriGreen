@@ -199,10 +199,43 @@ graph LR
 
 ---
 
-## Quick Start (coming soon)
+## Quick Start
+
+Requirements: Docker Compose and enough disk space for the local Ollama models. Start the services:
+
 ```bash
 docker compose up --build
-# Dashboard  → http://localhost:3000
-# API docs   → http://localhost:8000/docs
-# CLI        → verigreen audit sample.pdf
 ```
+
+In another terminal, download the models once:
+
+```bash
+docker exec -it verigreen-ollama ollama pull llama3:8b
+docker exec -it verigreen-ollama ollama pull nomic-embed-text
+```
+
+Then open the dashboard at [http://localhost:3000](http://localhost:3000) or the API docs at [http://localhost:8000/docs](http://localhost:8000/docs). Uploaded files, audit metadata, vectors, reports, and badges are stored in the local `data/` directory.
+
+The Typer CLI can submit a PDF or URL to the running API:
+
+```bash
+cd cli
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+python main.py audit ../sample/sample_brsr_demo.pdf --company "VanaWeave Textiles Private Limited" --year 2025-26
+```
+
+### Run without Docker
+
+If Ollama is installed directly on the host, install the backend dependencies and run the API from `backend/`:
+
+```bash
+pip install -r requirements.txt
+OLLAMA_HOST=http://127.0.0.1:11434 \
+OLLAMA_MODEL=llama3.1:latest \
+OLLAMA_EMBED_MODEL=bge-m3:latest \
+uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+Change the model names to tags shown by `ollama list` on your machine. In a second terminal, run the frontend with `npm ci && npm run dev -- --host 127.0.0.1 --port 3000` from `frontend/`.

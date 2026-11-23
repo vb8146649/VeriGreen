@@ -1,0 +1,46 @@
+# Runtime data
+data/
+!data/.gitkeep
+backend/data/
+cli_output/
+
+# PDFs in main folder
+/Official Team Registration _ RE_IMAGINE Hackathon 2026 _ HED 8.0 — PGT Global Network.pdf
+/VeriGreen AI - RE_IMAGINE 2026 Round 1 Proposal (1).pdf
+/VeriGreen AI - RE_IMAGINE 2026 Round 1 Proposal.pdf
+/Vishal - HED 8.0 Reimagine Pass.pdf
+/*.pdf
+!sample/sample_brsr_demo.pdf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Node
+node_modules/
+*.tar.gz
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+ollama_data/
+
+# Env
+.env
+backend/.env
